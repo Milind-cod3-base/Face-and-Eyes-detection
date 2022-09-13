@@ -24,3 +24,6 @@ while True:
         roi_color = img[y:y+h, x:x+w]
 
         # after finding the face, look for the eyes.
+        for (ex,ey, ew, eh) in eyes:
+            cv2.rectangle(img= roi_color, pt1= (ex,ey),pt2= (ex+ew, ey+eh), color=(0,255,0), thickness=2)
+            
