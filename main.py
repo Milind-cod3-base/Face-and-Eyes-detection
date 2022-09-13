@@ -24,6 +24,17 @@ while True:
         roi_color = img[y:y+h, x:x+w]
 
         # after finding the face, look for the eyes.
+        eyes = eye_cascade.detectMultiScale(roi_gray)
         for (ex,ey, ew, eh) in eyes:
             cv2.rectangle(img= roi_color, pt1= (ex,ey),pt2= (ex+ew, ey+eh), color=(0,255,0), thickness=2)
-            
+
+    
+
+    cv2.imshow('img',img)  # displays the image in the specified window
+    k = cv2.waitKey(30) # milliseconds, waits for specific time until you press any button on keyword
+
+    if k == 27: # interruption happens before 30 ms
+        break
+
+cap.release()
+cv2.destroyAllWindows()
